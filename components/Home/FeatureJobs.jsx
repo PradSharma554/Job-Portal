@@ -1,13 +1,9 @@
+"use client"
 import React from 'react'
 import { Heading, JobCard } from '../../paths'
-import Job from '@/models/Job'
-import connectToMongoDB from '@/lib/mongodb'
 import Link from 'next/link'
 
-const FeatureJobs = async () => {
-    await connectToMongoDB();
-    const jobs = await Job.find({}).limit(4).lean();
-
+const FeatureJobs = ({ jobs }) => {
     return (
         <div className='pt-8 md:pt-20 pb-8 md:pb-12'>
             <Heading mainHeading={'Feature jobs'} subHeading={'Know your worth and find the job that quality your life'} />

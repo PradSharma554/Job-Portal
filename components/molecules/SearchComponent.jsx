@@ -21,7 +21,7 @@ const SearchComponent = ({ query, setQuery, handleSearch }) => {
             type="text"
         />
         <button
-            onClick={handleSearch}
+            onClick={handleSearch != undefined ? handleSearch : null}
             title='Press to Search'
             type='button'
             className='px-5 py-4 outline-none rounded-r-md bg-blue-500 text-white'

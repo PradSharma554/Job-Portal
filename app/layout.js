@@ -16,15 +16,15 @@ export const metadata = {
 
 export default function RootLayout({ children }) {
   return (
-    <ClientProvider>
-      <html lang="en">
-        <body className={font.className}>
+    <html lang="en">
+      <body className={font.className}>
+        <ClientProvider>
           <Nav />
           {children}
           <ScrollToTop />
           <Footer />
-        </body>
-      </html>
-    </ClientProvider>
+        </ClientProvider>
+      </body>
+    </html>
   );
 }
