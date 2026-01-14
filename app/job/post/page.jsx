@@ -29,6 +29,7 @@ const PostJob = () => {
 
     const [formData, setFormData] = useState({
         title: '',
+        company: '',
         image: imagePresets[0],
         salary: '',
         location: '',
@@ -100,6 +101,21 @@ const PostJob = () => {
                                 value={formData.title}
                                 onChange={handleChange}
                                 placeholder="e.g. Senior Software Engineer"
+                                className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-colors bg-gray-50"
+                            />
+                        </div>
+
+                        {/* Company Name */}
+                        <div>
+                            <label htmlFor="company" className="block text-sm font-medium text-gray-700 mb-1">Company Name</label>
+                            <input
+                                type="text"
+                                id="company"
+                                name="company"
+                                required
+                                value={formData.company}
+                                onChange={handleChange}
+                                placeholder="e.g. Google, Microsoft"
                                 className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-colors bg-gray-50"
                             />
                         </div>

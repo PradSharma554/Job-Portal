@@ -5,9 +5,10 @@ import Job from "@/models/Job";
 export async function POST(request) {
   try {
     await connectToMongoDB();
-    const { title, image, salary, location, jobtype } = await request.json();
+    const { title, company, image, salary, location, jobtype } =
+      await request.json();
 
-    if (!title || !image || !salary || !location || !jobtype) {
+    if (!title || !company || !image || !salary || !location || !jobtype) {
       return NextResponse.json(
         { message: "All fields are required" },
         { status: 400 }
@@ -16,6 +17,7 @@ export async function POST(request) {
 
     const newJob = await Job.create({
       title,
+      company,
       image,
       salary,
       location,

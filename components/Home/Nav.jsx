@@ -8,7 +8,6 @@ import User from '../Helpers/User'
 
 const Nav = async () => {
     const session = await getServerSession(authOptions)
-    console.log(session)
     return (
         <div className='h-[13vh] shadow-md'>
             <div className='w-[90%] md-[80%] h-full mx-auto flex items-center justify-between'>
