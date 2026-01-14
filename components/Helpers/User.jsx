@@ -1,13 +1,9 @@
 "use client"
-import { Session } from "next-auth"
 import Image from "next/image"
 import { signOut } from "next-auth/react"
 import { useState } from "react"
 
-interface Props {
-    session: Session
-}
-const User = ({ session }: Props) => {
+const User = ({ session }) => {
     const [showLogout, setShowLogout] = useState(false)
     return (
         <div>

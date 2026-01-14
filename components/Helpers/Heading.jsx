@@ -1,10 +1,6 @@
 import React from 'react'
 
-interface Props {
-    mainHeading: string
-    subHeading: string
-}
-export const Heading = (props: Props) => {
+export const Heading = (props) => {
     return (
 
         <div className="text-center p-3">
@@ -19,4 +15,3 @@ export const Heading = (props: Props) => {
 
     )
 }
-

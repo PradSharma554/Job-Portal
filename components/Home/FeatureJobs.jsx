@@ -1,15 +1,20 @@
 import React from 'react'
 import { Heading, JobCard } from '../../paths'
-import JobData from '@/data'
+import Job from '@/models/Job'
+import connectToMongoDB from '@/lib/mongodb'
 import Link from 'next/link'
-const FeatureJobs = () => {
+
+const FeatureJobs = async () => {
+    await connectToMongoDB();
+    const jobs = await Job.find({}).limit(4).lean();
+
     return (
         <div className='pt-8 md:pt-20 pb-8 md:pb-12'>
             <Heading mainHeading={'Feature jobs'} subHeading={'Know your worth and find the job that quality your life'} />
 
             <div className='mt-12 w-[80%] mx-auto grid grid-cols-1 lg:grid-cols-2 gap-12'>
-                {JobData?.map((job) => {
-                    return <Link key={job?.id} href={`job/jobDetails/${job?.id}`}>
+                {jobs.map((job) => {
+                    return <Link key={job._id.toString()} href={`job/jobDetails/${job._id.toString()}`}>
                         <JobCard job={job} />
                     </Link>
                 })}

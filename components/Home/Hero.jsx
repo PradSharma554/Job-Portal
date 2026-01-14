@@ -14,11 +14,11 @@ const Hero = () => {
                         {/* search box */}
                         <div className='mt-[1.5rem]'>
                             <input className='w-[60%] md:w-[70%] lg:w-[75%] px-5 py-4 outline-none rounded-l-md bg-gray-200' placeholder='eg:Frontend developer' title='search box' type="text" />
-                            <button title='Press to Search'  type='button' className='px-5 py-4 outline-none rounded-r-md bg-blue-500'>Search</button> </div>
+                            <button title='Press to Search' type='button' className='px-5 py-4 outline-none rounded-r-md bg-blue-500'>Search</button> </div>
                     </div>
                     {/* image */}
                     <div className='hidden lg:block'>
-                        <Image src={HeroImg} alt="hero image" width={700} height={400}/>
+                        <Image src={HeroImg} alt="hero image" width={700} height={400} />
                     </div>
                 </div>
             </div>

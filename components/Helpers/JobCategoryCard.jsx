@@ -1,12 +1,7 @@
 import Image from 'next/image'
 import React from 'react'
 
-interface Props {
-    image: string,
-    category: String,
-    openPosition: String,
-}
-export const JobCategoryCard = ({ category, image, openPosition }: Props) => {
+export const JobCategoryCard = ({ category, image, openPosition }) => {
     return (
         <div className='flex space-x-4 p-4 border-2 cursor-pointer hover:scale-105 hover:shadow-sm transition-transform border-gray-600 rounded-lg border-opacity-20'>
             {/* image */}

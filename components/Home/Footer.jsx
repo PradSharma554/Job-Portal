@@ -1,14 +1,9 @@
 import React from 'react'
-import { IconType } from 'react-icons';
 import { FaFacebook, FaInstagram, FaTwitter, FaYoutube } from 'react-icons/fa6'
 
-interface Props {
-    bgColor: string,
-    Icon: IconType
-}
 const Footer = () => {
-    const aboutItems = ['Job', 'Privacy', 'Police', 'Application', 'Candidates'];
-    const quickLinkItems = ['All Job', 'Job Details', 'How To Apply', 'Resume'];
+    const aboutItems = ['Job', 'Privacy', 'Sitemap', 'Terms of use']
+    const quickLinkItems = ['All jobs', 'Details', 'Contact', 'Home']
     return (
         <div className='pt-20 pb-12 bg-black'>
             <div className='w-[80%] mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-12 pb-8 border-b-2 border-white border-opacity-10'>
@@ -35,17 +30,14 @@ const Footer = () => {
     )
 }
 // COMPONENT FOR SECIAL ICON 
-const SocialIcon = ({ bgColor, Icon }: Props) => (
+const SocialIcon = ({ bgColor, Icon }) => (
     <div className={`w-10 h-10 bg-${bgColor}-600 rounded-full flex items-center justify-center flex-col`}>
         <Icon className='text-white' />
     </div>
 );
-interface SectionProps {
-    data: String[]
-    title: String
-}
+
 // COMPONENT FOR FOOTER SECTION
-const FooterSection = ({ data, title }: SectionProps) => (
+const FooterSection = ({ data, title }) => (
     <div>
         <h1 className='text-[22px] w-fit text-white font-semibold mb-6'>{title}</h1>
         {data?.map((item, index) => <p key={index} className='text-base w-fit text-white text-opacity-50 hover:text-yellow-300 cursor-pointer '>{item}</p>)}
