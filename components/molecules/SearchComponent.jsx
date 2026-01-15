@@ -14,7 +14,7 @@ const SearchComponent = ({ query, setQuery, handleSearch }) => {
         <input
             value={debouncedQuery}
             onChange={(e) => setDebouncedQuery(e.target.value)}
-            onKeyDown={(e) => e.key === 'Enter' && handleSearch()}
+            onKeyDown={handleSearch != undefined ? (e) => e.key === 'Enter' && handleSearch() : null}
             className='w-[60%] md:w-[70%] lg:w-[75%] px-5 py-4 outline-none rounded-l-md bg-gray-200'
             placeholder='Search by role or company...'
             title='search box'

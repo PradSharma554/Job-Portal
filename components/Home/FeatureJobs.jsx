@@ -3,7 +3,7 @@ import React from 'react'
 import { Heading, JobCard } from '../../paths'
 import Link from 'next/link'
 
-const FeatureJobs = ({ jobs }) => {
+const FeatureJobs = ({ jobs, savedJobIds, toggleSaveJob }) => {
     return (
         <div className='pt-8 md:pt-20 pb-8 md:pb-12'>
             <Heading mainHeading={'Feature jobs'} subHeading={'Know your worth and find the job that quality your life'} />
@@ -11,7 +11,11 @@ const FeatureJobs = ({ jobs }) => {
             <div className='mt-12 w-[80%] mx-auto grid grid-cols-1 lg:grid-cols-2 gap-12'>
                 {jobs.map((job) => {
                     return <Link key={job._id.toString()} href={`job/jobDetails/${job._id.toString()}`}>
-                        <JobCard job={job} />
+                        <JobCard
+                            job={job}
+                            isSaved={savedJobIds?.includes(job._id)}
+                            onToggleSave={toggleSaveJob}
+                        />
                     </Link>
                 })}
 

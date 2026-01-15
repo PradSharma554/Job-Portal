@@ -1,12 +1,15 @@
 import React from "react";
 import AllJobsContainer from "@/containers/Job/AllJobsContainer";
+import AllJobs from "@/components/Job/AllJobs";
 
-const AllJobs = ({ searchParams }) => {
+const AllJobsPage = () => {
   return (
     <React.Suspense fallback={<div>Loading jobs...</div>}>
-      <AllJobsContainer search={searchParams?.search} />
+      <AllJobsContainer>
+        <AllJobs />
+      </AllJobsContainer>
     </React.Suspense>
   );
 };
 
-export default AllJobs;
+export default AllJobsPage;

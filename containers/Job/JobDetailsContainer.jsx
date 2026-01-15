@@ -1,15 +1,17 @@
 "use client"
 import React from 'react'
-import { useGetJobDetails, useGetAllJobs } from '@/queries/jobQueries' // Assuming related jobs are fetched from all jobs for now or similar
+import { useGetJobDetails, useGetAllJobs, useGetSavedJobs, useToggleSaveJob } from '@/queries/jobQueries'
 import { JobCard } from "@/paths";
 import Link from 'next/link';
 import { ApplyButton } from "@/paths";
 
 const JobDetailsContainer = ({ id, session }) => {
     const { data: job, isLoading, isError } = useGetJobDetails(id);
-    // Fetching some "related" jobs - just fetching all and slicing for simplicity in this demo container
-    // Ideally, there should be a dedicated endpoint or query parameter for related jobs
     const { data: allJobs } = useGetAllJobs();
+
+    // Saved Jobs Logic
+    const { data: savedJobIds } = useGetSavedJobs();
+    const { mutate: toggleSaveJob } = useToggleSaveJob();
 
     const relatedJobs = allJobs?.filter(j => j._id !== id).slice(0, 4) || [];
 
@@ -21,7 +23,11 @@ const JobDetailsContainer = ({ id, session }) => {
         <div className='mt-20 mb-12'>
             <div className='block sm:flex items-center justify-between w-[80%] mx-auto'>
                 <div className='flex-[0.7]'>
-                    <JobCard job={job} />
+                    <JobCard
+                        job={job}
+                        isSaved={savedJobIds?.includes(job._id)}
+                        onToggleSave={toggleSaveJob}
+                    />
                 </div>
                 {session && <ApplyButton />}
                 {!session && <Link href={'/signup'}>
@@ -49,7 +55,11 @@ const JobDetailsContainer = ({ id, session }) => {
                 <div className='mt-10'>
                     <h1 className='text-xl font-semibold'>Related Jobs</h1>
                     {relatedJobs?.map((job) => <Link key={job._id.toString()} href={`/job/jobDetails/${job._id.toString()}`} className='space-y-6'>
-                        <JobCard job={job} />
+                        <JobCard
+                            job={job}
+                            isSaved={savedJobIds?.includes(job._id)}
+                            onToggleSave={toggleSaveJob}
+                        />
                     </Link>
 
                     )}

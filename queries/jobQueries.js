@@ -11,7 +11,7 @@ export const useGetFeaturedJobs = () => {
   });
 };
 
-export const useGetAllJobs = (search = "") => {
+export const useGetAllJobs = ({ search = "" } = {}) => {
   return useQuery({
     queryKey: ["allJobs", search],
     queryFn: async () => {
@@ -55,6 +55,40 @@ export const usePostJob = () => {
     onSuccess: () => {
       queryClient.invalidateQueries(["allJobs"]);
       queryClient.invalidateQueries(["featuredJobs"]);
+    },
+  });
+};
+
+export const useGetSavedJobs = () => {
+  return useQuery({
+    queryKey: ["savedJobs"],
+    queryFn: async () => {
+      const res = await fetch("/api/user/saved");
+      if (res.status === 401) return [];
+      if (!res.ok) throw new Error("Failed to fetch saved jobs");
+      const data = await res.json();
+      return data.savedJobs || [];
+    },
+    retry: false,
+  });
+};
+
+export const useToggleSaveJob = () => {
+  const queryClient = useQueryClient();
+
+  return useMutation({
+    mutationFn: async (jobId) => {
+      const res = await fetch("/api/user/saved", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ jobId }),
+      });
+      if (!res.ok) throw new Error("Failed to save job");
+      return res.json();
+    },
+    onSuccess: (data) => {
+      // Invalidate savedJobs to refetch the fresh list
+      queryClient.invalidateQueries(["savedJobs"]);
     },
   });
 };

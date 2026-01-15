@@ -1,9 +1,9 @@
 import Image from 'next/image'
 import React from 'react'
 import { BiMoney } from 'react-icons/bi'
-import { FaMapLocation, FaRegBookmark, } from 'react-icons/fa6'
+import { FaMapLocation, FaRegBookmark, FaBookmark } from 'react-icons/fa6'
 
-export const JobCard = ({ job }) => {
+export const JobCard = ({ job, isSaved = false, onToggleSave = () => { } }) => {
     return (
         <div className="relative transition-transform duration-300 hover:scale-105 border-gray-600 rounded-lg  border-2 border-opacity-20 p-1 md:p-2">
             <div className="flex items-center space-x-6">
@@ -45,7 +45,25 @@ export const JobCard = ({ job }) => {
             </div>
 
             <div className='absolute z-40 top-4 right-4'>
-                <FaRegBookmark className='hover:text-orange-600' />
+                {isSaved ? (
+                    <FaBookmark
+                        onClick={(e) => {
+                            e.stopPropagation();
+                            e.preventDefault();
+                            onToggleSave(job._id);
+                        }}
+                        className='w-6 h-6 text-orange-600 cursor-pointer'
+                    />
+                ) : (
+                    <FaRegBookmark
+                        onClick={(e) => {
+                            e.stopPropagation();
+                            e.preventDefault();
+                            onToggleSave(job._id);
+                        }}
+                        className='w-6 h-6 hover:text-orange-600 cursor-pointer text-gray-400'
+                    />
+                )}
             </div>
         </div>
     )

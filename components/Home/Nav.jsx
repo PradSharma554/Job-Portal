@@ -13,15 +13,22 @@ const Nav = async () => {
             <div className='w-[90%] md-[80%] h-full mx-auto flex items-center justify-between'>
                 {/* logo */}
                 <div>
-                    <div className='w-[150px] h-[150px] md:w-[250px] md:h-[250px]'>
+                    <div className=''>
                         <Link href='/'>
-                            <Image src={LogoImage} alt="logo" className='w-full h-full' />
+                            <div className='font-extrabold text-black cursor-pointer text-3xl'>
+                                Job Portal
+                            </div>
                         </Link>
                     </div>
                 </div>
                 <div className='flex space-x-2 items-center'>
                     {/* <Image src={''} alt='user logo' /> */}
                     {!session && <Link href={'/signup'}><button className='px-4 py-1.5 text-[14px] sm:text-[16px] sm:px-6 sm:py-2 bg-blue-600 font-semibold text-white rounded-lg hover:bg-blue-800 transition-colors duration-300'>Sign up</button></Link>}
+                    {session && <Link
+                        href="/saved"
+                        className='px-4 py-1.5 text-[14px] sm:text-[16px] sm:px-6 sm:py-2 text-gray-700 font-semibold hover:text-blue-600 transition-colors duration-300'
+                    >
+                        Saved Jobs</Link>}
                     {session && <User session={session} />}
 
                     {session && <Link href="/job/post">
