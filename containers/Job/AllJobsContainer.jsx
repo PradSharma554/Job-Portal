@@ -4,12 +4,14 @@ import { useGetAllJobs, useGetSavedJobs, useToggleSaveJob } from '@/queries/jobQ
 import { useQueryState } from 'nuqs';
 
 const AllJobsContainer = ({ children }) => {
-    const [query, setQuery] = useQueryState('search', { default: '', history: 'push' });
+    const [query, setQuery] = useQueryState('search', {
+        default: null,
+        history: 'push',
+    });
 
     const getAllJobs = useGetAllJobs({
         search: query,
     });
-
     const { data: savedJobIds } = useGetSavedJobs();
     const { mutate: toggleSaveJob } = useToggleSaveJob();
 

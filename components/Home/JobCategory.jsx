@@ -6,7 +6,7 @@ const JobCategory = () => {
             {/* Heading */}
             <Heading mainHeading="Popular job categories" subHeading="2020 jobs live - 293 added today" />
 
-            <div className="w-[80%] mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 mt-4 gap-3 items-center">
+            <div className=" mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 mt-4 gap-3 items-center">
                 <JobCategoryCard image='/images/icon1.png' category='Finance' openPosition='23' />
                 <JobCategoryCard image='/images/icon2.png' category='Marketing' openPosition='13' />
                 <JobCategoryCard image='/images/icon3.png' category='Sales' openPosition='53' />

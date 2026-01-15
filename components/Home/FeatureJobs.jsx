@@ -8,7 +8,7 @@ const FeatureJobs = ({ jobs, savedJobIds, toggleSaveJob }) => {
         <div className='pt-8 md:pt-20 pb-8 md:pb-12'>
             <Heading mainHeading={'Feature jobs'} subHeading={'Know your worth and find the job that quality your life'} />
 
-            <div className='mt-12 w-[80%] mx-auto grid grid-cols-1 lg:grid-cols-2 gap-12'>
+            <div className='mt-12 mx-auto grid grid-cols-1 lg:grid-cols-2 gap-12'>
                 {jobs.map((job) => {
                     return <Link key={job._id.toString()} href={`job/jobDetails/${job._id.toString()}`}>
                         <JobCard

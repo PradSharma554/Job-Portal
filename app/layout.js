@@ -17,10 +17,12 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
-      <body className={font.className}>
+      <body className={`${font.className} flex flex-col min-h-screen`}>
         <ClientProvider>
           <Nav />
-          {children}
+          <div className="flex-grow mx-20 my-10 min-h-[calc(100vh-12rem)]">
+            {children}
+          </div>
           <ScrollToTop />
           <Footer />
         </ClientProvider>

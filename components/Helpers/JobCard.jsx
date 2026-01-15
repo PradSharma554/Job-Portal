@@ -5,7 +5,7 @@ import { FaMapLocation, FaRegBookmark, FaBookmark } from 'react-icons/fa6'
 
 export const JobCard = ({ job, isSaved = false, onToggleSave = () => { } }) => {
     return (
-        <div className="relative transition-transform duration-300 hover:scale-105 border-gray-600 rounded-lg  border-2 border-opacity-20 p-1 md:p-2">
+        <div className="relative w-max transition-transform duration-300 hover:scale-105 border-gray-600 rounded-lg  border-2 border-opacity-20 p-1 md:p-2">
             <div className="flex items-center space-x-6">
                 {/* Image */}
                 <div>

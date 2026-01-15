@@ -15,13 +15,13 @@ const JobDetailsContainer = ({ id, session }) => {
 
     const relatedJobs = allJobs?.filter(j => j._id !== id).slice(0, 4) || [];
 
-    if (isLoading) return <div className='mt-20 w-[80%] mx-auto'>Loading...</div>;
-    if (isError) return <div className='mt-20 w-[80%] mx-auto'>Error loading job details</div>;
-    if (!job) return <div className='mt-20 w-[80%] mx-auto'>Job not found</div>;
+    if (isLoading) return <div className='mt-20  mx-auto'>Loading...</div>;
+    if (isError) return <div className='mt-20  mx-auto'>Error loading job details</div>;
+    if (!job) return <div className='mt-20  mx-auto'>Job not found</div>;
 
     return (
         <div className='mt-20 mb-12'>
-            <div className='block sm:flex items-center justify-between w-[80%] mx-auto'>
+            <div className='block sm:flex items-center justify-between  mx-auto'>
                 <div className='flex-[0.7]'>
                     <JobCard
                         job={job}
@@ -29,12 +29,14 @@ const JobDetailsContainer = ({ id, session }) => {
                         onToggleSave={toggleSaveJob}
                     />
                 </div>
-                {session && <ApplyButton />}
+                <div className='mt-4 mb-4'>
+                    {session && <ApplyButton />}
+                </div>
                 {!session && <Link href={'/signup'}>
                     <button type='button' className='px-8 py-3 bg-emerald-600 rounded-lg text-white'>Signup</button>
                 </Link>}
             </div>
-            <div className='mt-16 w-[80%] mx-auto'>
+            <div className='mt-16  mx-auto'>
                 <h1 className='text-xl font-semibold'>Job Description</h1>
                 <p className='mt-4 text-black text-opacity-70'>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Perferendis deleniti blanditiis aliquid voluptatem, saepe autem omnis, aperiam consequatur quos voluptas quisquam, corporis facere. Tempore maxime, laboriosam corporis dolorum animi nihil!</p>
                 <div className='mt-10 '>
