@@ -5,7 +5,7 @@ import { useQueryState } from 'nuqs';
 
 const AllJobsContainer = ({ children }) => {
     const [query, setQuery] = useQueryState('search', {
-        default: null,
+        default: '',
         history: 'push',
     });
 

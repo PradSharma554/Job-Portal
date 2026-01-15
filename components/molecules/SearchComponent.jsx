@@ -5,7 +5,7 @@ const SearchComponent = ({ query, setQuery, handleSearch }) => {
 
     useEffect(() => {
         const timer = setTimeout(() => {
-            setQuery(debouncedQuery)
+            setQuery(debouncedQuery || null)
         }, 500)
         return () => clearTimeout(timer)
     }, [debouncedQuery])
