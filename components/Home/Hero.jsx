@@ -16,7 +16,7 @@ const Hero = () => {
     // }, [query])
 
     const handleSearch = () => {
-        if (query.trim()) {
+        if (query?.trim()) {
             router.push(`/job/alljobs?search=${query}`)
         }
     }

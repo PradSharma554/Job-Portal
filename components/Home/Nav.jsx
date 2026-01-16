@@ -26,16 +26,16 @@ const Nav = async () => {
                     {!session && <Link href={'/signup'}><button className='px-4 py-1.5 text-[14px] sm:text-[16px] sm:px-6 sm:py-2 bg-blue-600 font-semibold text-white rounded-lg hover:bg-blue-800 transition-colors duration-300'>Sign up</button></Link>}
                     {session && <Link
                         href="/saved"
-                        className='px-4 py-1.5 text-[14px] sm:text-[16px] sm:px-6 sm:py-2 text-gray-700 font-semibold hover:text-blue-600 transition-colors duration-300'
+                        className='px-4 cursor-pointer py-1.5 text-[14px] sm:text-[16px] sm:px-6 sm:py-2 text-gray-700 font-semibold hover:text-blue-600 transition-colors duration-300'
                     >
                         Saved Jobs</Link>}
-                    {session && <User session={session} />}
 
                     {session && <Link href="/job/post">
                         <button className='px-4 py-1.5 text-[14px] h-[3em] sm:text-[16px] sm:px-6 
                     sm:py-2 bg-orange-600 hover:bg-orange-800  font-semibold text-white  rounded-lg 
                     transition-colors duration-300'>Post a job</button>
                     </Link>}
+                    {session && <User session={session} />}
                 </div>
             </div>
         </div>
